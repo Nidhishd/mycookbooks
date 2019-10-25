@@ -1,0 +1,6 @@
+UPDATE mysql.user SET Password=PASSWORD('qwerty') WHERE User='root';
+create user 'wordpress'@'localhost' identified by 'abcdefg';
+create database  wp_db;
+grant all privileges on wp_db.* to 'wordpress'@'localhost';
+flush privilegesS;
+

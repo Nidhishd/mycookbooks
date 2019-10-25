@@ -1,0 +1,24 @@
+Listen 80
+Include conf.modules.d/*.conf
+User apache
+Group apache
+<IfModule mime_module>
+    TypesConfig /etc/mime.types
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
+ 
+<VirtualHost *:80>
+  ServerName wordpress.local
+  ServerAdmin admin@example.com
+  DocumentRoot /var/www/mydata/wordpress
+  <Directory "/">
+          Options FollowSymLinks
+          AllowOverride None
+  </Directory>
+  AddType application/x-httpd-php .php
+  AddType application/x-httpd-php-source .phps
+  DirectoryIndex index.php index.html
+</VirtualHost>
